@@ -1,0 +1,5 @@
+1.复制views下面的tpl文件夹，修复文件夹名，并修改current_module值，设置列表字段和表单的字段
+2.移动tpl.php到controller文件夹下，并更名
+3.栏目管理里设置相应的view
+4.如果有特殊数据，需store/modules中添加相应的模块，并在store/index.js中添加声明
+
