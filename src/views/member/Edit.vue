@@ -32,13 +32,12 @@
                     username: [
                         { required: true, message: '帐号不能为空', trigger: 'blur' }
                     ],
-
                 }
             }
         },
         computed: {
             group() {
-                return this.$store.state[this.current_module].edit.group;
+                return this.edit.group;
             }
         }
     }

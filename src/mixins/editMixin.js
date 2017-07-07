@@ -7,8 +7,19 @@ export default {
     },
     data() {
         return {
-            formData:{}
+            edit: {
+                formData:{}
+            }
         };
+    },
+    computed: {
+        formData() {
+            if (this.edit.formData) {
+                return this.edit.formData
+            } else  {
+                return {}
+            }
+        }
     },
     methods: {
         handleSubmit (name) {
@@ -26,7 +37,7 @@ export default {
                         Object.keys(this.formData).map((item)=> {
                             empty[item] = null;
                         });
-                        this.formData = empty;
+                        this.edit.formData = empty;
                     });
                 } else {
                     this.$Message.error('表单验证失败!');
@@ -35,11 +46,7 @@ export default {
         },
         getFormData() {
             Api.get(this.current_module + '/edit', {id:this.id}, (data) => {
-                if(data.formData) {
-                    this.formData = data.formData;
-                } else {
-                    this.formData = {};
-                }
+                this.edit = data;
             });
         }
     },
