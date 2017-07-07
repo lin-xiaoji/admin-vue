@@ -2,8 +2,6 @@ import MyPage from '../components/MyPage.vue';
 export default {
     data () {
         return {
-            list:{},
-            total:0,
             operate: [
                 {
                     title: '操作',
@@ -42,10 +40,19 @@ export default {
                             let added = this.operateAdd(h,params);
                             buttons = buttons.concat(added);
                         }
+
                         return h('div', buttons);
                     }
                 }
             ]
+        }
+    },
+    computed: {
+        list() {
+            return this.$store.state[this.current_module].index.list
+        },
+        total() {
+            return this.$store.state[this.current_module].index.total
         }
     },
     methods: {
