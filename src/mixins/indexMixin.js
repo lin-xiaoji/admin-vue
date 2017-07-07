@@ -1,9 +1,8 @@
-import Api from '../utils/Api'
 import MyPage from '../components/MyPage.vue';
 export default {
     data () {
         return {
-            list:[],
+            list:{},
             total:0,
             operate: [
                 {
@@ -79,10 +78,20 @@ export default {
     },
 
     mounted() {
-        Api.get(this.current_module + '/index', {page:1}, (data) => {
-            this.index = data.data;
-            this.total = data.total;
+        this.$store.dispatch('getList',{
+            module:this.current_module,
+            page:1
         });
+    },
+    created() {
+        if(!this.$store.state[this.current_module]) {
+            this.$store.registerModule(this.current_module, {
+                state: {
+                    index:{},
+                    edit:{},
+                }
+            });
+        }
     },
     components:{
         MyPage
