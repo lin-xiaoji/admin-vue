@@ -18,7 +18,7 @@
         mixins: [editMixin],
         data () {
             return {
-                current_module:'article',
+                currentModule:'article',
                 ruleValidate: {
                     title: [
                         { required: true, message: '文章标题不能为空', trigger: 'blur' }

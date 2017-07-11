@@ -18,7 +18,7 @@
         mixins: [editMixin],
         data () {
             return {
-                current_module:'tpl',
+                currentModule:'tpl',
                 ruleValidate: {
                     name: [
                         { required: true, message: '名称不能为空', trigger: 'blur' }

@@ -12,7 +12,7 @@
         mixins: [indexMixin],
         data () {
             return {
-                current_module:'menu',
+                currentModule:'menu',
                 columns: [
                     {
                         title: 'ID',

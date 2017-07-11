@@ -18,7 +18,7 @@
         mixins: [editMixin],
         data () {
             return {
-                current_module:'article_cate',
+                currentModule:'article_cate',
                 ruleValidate: {
                     name: [
                         { required: true, message: '分类名称不能为空', trigger: 'blur' }

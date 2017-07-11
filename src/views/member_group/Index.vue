@@ -15,7 +15,7 @@
         mixins: [indexMixin],
         data () {
             return {
-                current_module:'member_group',
+                currentModule:'member_group',
                 columns: [
                     {
                         title: 'ID',

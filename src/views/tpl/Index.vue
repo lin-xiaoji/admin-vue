@@ -14,7 +14,7 @@
         mixins: [indexMixin],
         data () {
             return {
-                current_module:'tpl',
+                currentModule:'tpl',
                 columns: [
                     {
                         title: 'ID',

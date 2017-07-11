@@ -14,7 +14,7 @@
         mixins: [indexMixin],
         data () {
             return {
-                current_module:'article',
+                currentModule:'article',
                 columns: [
                     {
                         title: 'ID',

@@ -269,14 +269,12 @@ class Curd extends Common  {
 		if($conf['endFunc']) {
 			$conf['endFunc']($data);
 		}
-		return $data;
+		$this->success($data);
 	}
 
 
 	function index() {
-		$conf = $this->conf['index'];
-		$data = $this->get_list($conf);
-		$this->success($data);
+		$this->get_list($this->conf['index']);
 	}
 
 
@@ -428,8 +426,23 @@ class Curd extends Common  {
 		}
 	}
 
+}
 
 
+class CheckLogin extends Curd {
+	protected $login_id;
+	public function __construct() {
+		parent::__construct();
+		$login_id = $this->get('login_id');
+		$token = $this->get('token');
+		$item = D("member")->find($login_id);
+		if($token != md5($item['id'].$item['username'].$item['password'])) {
+			$this->error('token无效');
+		} else {
+			$this->login_id = $login_id;
+		}
+
+	}
 }
 // END Controller class
 

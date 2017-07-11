@@ -17,7 +17,7 @@
         mixins: [indexMixin],
         data () {
             return {
-                current_module:'menu',
+                currentModule:'menu',
             }
         },
         computed: {

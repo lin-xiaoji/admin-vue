@@ -25,17 +25,6 @@ export default {
                                     }
                                 }
                             }, '编辑'),
-                            h('Button', {
-                                props: {
-                                    type: 'error',
-                                    size: 'small'
-                                },
-                                on: {
-                                    click: () => {
-                                        this.remove(params)
-                                    }
-                                }
-                            }, '删除')
                         ];
                         if(this.operateAdd) {
                             let added = this.operateAdd(h,params);
@@ -50,17 +39,20 @@ export default {
     },
     computed: {
         list() {
-            return this.$store.state[this.current_module].index.list
+            return this.$store.state[this.currentModule].index.list
         },
         total() {
-            return this.$store.state[this.current_module].index.total
+            return this.$store.state[this.currentModule].index.total
         }
     },
     methods: {
         page(page) {
+            this.$store.commit('currentPage',{
+                module:this.currentModule,
+                page:page,
+            });
             this.$store.dispatch('getList',{
-                module:this.current_module,
-                page:page
+                module:this.currentModule,
             });
         },
         edit(params) {
@@ -68,10 +60,10 @@ export default {
             if(params.row) {
                 id = params.row.id;
             }
-            let component = require('../views/'+ this.current_module +'/Edit.vue');
+            let component = require('../views/'+ this.currentModule +'/Edit.vue');
             this.$store.commit('modalShow',true);
             this.$store.commit('modalComponent',component);
-            Api.get(this.current_module + '/edit', {id:id}, (data) => {
+            Api.get(this.currentModule + '/edit', {id:id}, (data) => {
                 this.$store.commit('modalData',data);
             });
         },
@@ -80,7 +72,7 @@ export default {
                 return false;
             }
             this.$store.dispatch('remove',{
-                module:this.current_module,
+                module:this.currentModule,
                 index:params.index,
                 id:params.row.id
             });
@@ -89,16 +81,20 @@ export default {
 
     mounted() {
         this.$store.dispatch('getList',{
-            module:this.current_module,
-            page:1
+            module:this.currentModule
         });
     },
     created() {
-        if(!this.$store.state[this.current_module]) {
-            this.$store.registerModule(this.current_module, {
+        if(!this.$store.state[this.currentModule]) {
+            if (!this.indexApi) {
+                this.indexApi = this.currentModule + '/index'
+            }
+            this.$store.registerModule(this.currentModule, {
                 state: {
+                    currentModule:this.currentModule,
+                    currentPage:1,
+                    indexApi:this.indexApi,
                     index:{},
-                    edit:{},
                 }
             });
         }

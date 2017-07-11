@@ -27,7 +27,7 @@
         mixins: [editMixin],
         data () {
             return {
-                current_module:'member',
+                currentModule:'member',
                 ruleValidate: {
                     username: [
                         { required: true, message: '帐号不能为空', trigger: 'blur' }

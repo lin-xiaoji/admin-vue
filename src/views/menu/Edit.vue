@@ -38,7 +38,7 @@
         mixins: [editMixin],
         data () {
             return {
-                current_module:'menu',
+                currentModule:'menu',
                 ruleValidate: {
                     name: [
                         { required: true, message: '栏目不能为空', trigger: 'blur' }

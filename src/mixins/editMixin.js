@@ -21,12 +21,11 @@ export default {
         handleSubmit (name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    Api.post(this.current_module + '/edit',this.formData,(data) =>{
+                    Api.post(this.currentModule + '/edit',this.formData,(data) =>{
                         this.$Message.success('提交成功!');
                         this.$store.commit('modalShow',false);
                         this.$store.dispatch('getList',{
-                            module:this.current_module,
-                            page:1
+                            module:this.currentModule
                         });
                         //清空表单
                         let empty = {};

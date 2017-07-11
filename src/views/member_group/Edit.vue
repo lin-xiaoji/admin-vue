@@ -18,7 +18,7 @@
         mixins: [editMixin],
         data () {
             return {
-                current_module:'member_group',
+                currentModule:'member_group',
                 ruleValidate: {
                     name: [
                         { required: true, message: '权限组名称不能为空', trigger: 'blur' }
