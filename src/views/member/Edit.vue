@@ -37,7 +37,7 @@
         },
         computed: {
             group() {
-                return this.edit.group;
+                return this.modalData.group;
             }
         }
     }

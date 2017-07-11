@@ -1,3 +1,4 @@
+import Api from '../utils/Api'
 import MyPage from '../components/MyPage.vue';
 export default {
     data () {
@@ -69,8 +70,10 @@ export default {
             }
             let component = require('../views/'+ this.current_module +'/Edit.vue');
             this.$store.commit('modalShow',true);
-            this.$store.commit('modalParam',{id:id});
             this.$store.commit('modalComponent',component);
+            Api.get(this.current_module + '/edit', {id:id}, (data) => {
+                this.$store.commit('modalData',data);
+            });
         },
         remove(params) {
             if (!confirm('确定要删除该数据吗')) {

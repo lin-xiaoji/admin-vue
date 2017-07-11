@@ -8,7 +8,7 @@
                :mask-closable="false"
                @on-cancel="closeModal"
                :footer-hide="true">
-            <component :is="modalComponent" v-bind="modalParam"></component>
+            <component :is="modalComponent" v-bind:modalData="modalData"></component>
         </Modal>
     </div>
 </template>
@@ -24,8 +24,8 @@
             modalShow() {
                 return this.$store.state.modalShow;
             },
-            modalParam() {
-                return this.$store.state.modalParam;
+            modalData() {
+                return this.$store.state.modalData;
             },
             modalComponent() {
                 return this.$store.state.modalComponent;

@@ -12,14 +12,14 @@ export default new Vuex.Store({
     state: {
         modalShow:false,
         modalComponent:null,
-        modalParam:{},
+        modalData:{},
     },
     mutations: {
         modalShow(state, value) {
             state.modalShow = value;
         },
-        modalParam(state, param) {
-            state.modalParam = param;
+        modalData(state, param) {
+            state.modalData = param;
         },
         modalComponent(state, component) {
             state.modalComponent = component;
